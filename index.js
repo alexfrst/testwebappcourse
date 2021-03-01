@@ -10,11 +10,11 @@ app.use(bodyparser.json())
 let db = null;
 let collection = null;
 
-const client = new MongoClient(process.env.mongouri);
+const client = new MongoClient("mogodb://localhost");
 
 async function GetCollection() {
         await client.connect();
-        db = client.db('tutorial')
+        db = client.db('figures')
         collection = db.collection('figures10')
 };
 GetCollection()
