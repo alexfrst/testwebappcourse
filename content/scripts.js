@@ -190,7 +190,7 @@ const readData = async () => {
 }
 
 const queryObjects = async () =>{
-    return fetch(`http://localhost:5000/data`).then(function(result) {
+    return fetch(`https://testwebappcourse.herokuapp.com/data`).then(function(result) {
         return result.json();
     }).then(function(json) {
         return(json.data)
@@ -205,7 +205,7 @@ const sendObject = async (figure, c, intercept) =>{
     //     return(json.data)
     // });
 
-    fetch('http://localhost:5000/data', {
+    fetch('https://testwebappcourse.herokuapp.com/data', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
