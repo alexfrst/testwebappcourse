@@ -84,7 +84,7 @@ const PostFigures2 = async (figure, user) => {
 
 
 app.post("/app2/data",(req,res) => {
-    console.log(req.body.data)
+    console.log(req.body)
     if(req.body && req.body.data && req.body.user && req.body.data.length == 7 ){
         PostFigures2(req.body.data,req.body.user);
     }else{
