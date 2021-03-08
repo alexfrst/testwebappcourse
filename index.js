@@ -12,6 +12,7 @@ let collection = null;
 
 const client = new MongoClient(process.env.mongouri);
 
+
 async function GetCollection() {
         await client.connect();
         db = client.db('figures')
