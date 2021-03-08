@@ -65,6 +65,7 @@ app.use("/app2",express.static('content2'))
 
 
 const QueryFigure2 = async(user) => {
+	console.log(user)
     const result = []
     const cursor = await collection2.find({user:user}).toArray()
 
@@ -75,7 +76,7 @@ const QueryFigure2 = async(user) => {
 }
 
 const PostFigures2 = async (figure, user) => {
-    const doc = {fig:figure,user:user};
+    const doc = {"fig":figure,"user":user};
     const reulst = await collection2.insertOne(doc);
     console.log(reulst)
 }
@@ -94,7 +95,8 @@ app.post("/app2/data",(req,res) => {
 
 app.post("/app2/data2",async (req,res) => {
     console.log(req.body)
-    res.send({data:await QueryFigure2(req.body.name)})
+    console.log(req.body.name)
+    res.send({"data":await QueryFigure2(req.body.name)})
 })
 
 
