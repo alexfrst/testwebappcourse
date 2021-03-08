@@ -10,7 +10,7 @@ app.use(bodyparser.json())
 let db = null;
 let collection = null;
 
-const client = new MongoClient("mogodb://localhost");
+const client = new MongoClient(process.env.mongorui);
 
 async function GetCollection() {
         await client.connect();
@@ -38,21 +38,21 @@ const PostFigures = async (figure) => {
 
 app.get("/", ((req, res) => {
     console.log(req)
-    res.status(200).send("Hello World")
+    res.status(200).send("Hello World  got to /app1 or /app2")
 }))
 
 
 
-app.post("/data",(req,res) => {
+app.post("app1/data",(req,res) => {
     console.log(req.body)
     if(req.body && req.body.length == 7){
         PostFigures(req.body);
     }else{
-        res.status(400).send("An error occured make sure you send you data with the key data and the your array length matches 7")
+        res.status(400).send("An error occured make sure you send you data with the key data and that your array length matches 7")
     }
 })
 
-app.get("/data",async (req,res) => {
+app.get("app1/data",async (req,res) => {
     console.log(await QueryFigure())
     res.send({data:await QueryFigure()})
 })

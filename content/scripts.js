@@ -181,7 +181,7 @@ const readData = async () => {
 
         if(figure==="Triangle"){
             DrawTriangle(c,[x,y],true)
-        }else if(figure==="Square"){
+        }else if(figure==="Square"){ 
             DrawSquare(c,[x,y],true);
         }else{
             DrawCircle(c,[x,y],true);
@@ -190,7 +190,7 @@ const readData = async () => {
 }
 
 const queryObjects = async () =>{
-    return fetch(`https://localhost:5000/data`).then(function(result) {
+    return fetch(`https://testwebappcourse.herokuapp.com/app1/data`).then(function(result) {
         return result.json();
     }).then(function(json) {
         return(json.data)
@@ -205,7 +205,7 @@ const sendObject = async (figure, c, intercept) =>{
     //     return(json.data)
     // });
 
-    fetch('https://localhost:5000/data', {
+    fetch('https://testwebappcourse.herokuapp.com/app1/data', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
