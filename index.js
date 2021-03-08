@@ -18,7 +18,7 @@ async function GetCollection() {
         await client.connect();
         db = client.db('figures')
         collection = db.collection('figures10')
-        collection = db.collection('figures15')
+        collection2 = db.collection('figures15')
 };
 GetCollection()
 
