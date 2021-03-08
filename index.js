@@ -10,7 +10,7 @@ app.use(bodyparser.json())
 let db = null;
 let collection = null;
 
-const client = new MongoClient(process.env.mongorui);
+const client = new MongoClient(process.env.mongouri);
 
 async function GetCollection() {
         await client.connect();
