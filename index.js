@@ -58,6 +58,46 @@ app.get("/app1/data",async (req,res) => {
     res.send({data:await QueryFigure()})
 })
 
+app.use("/app2",express.static('content2'))
+
+collection2 = db.collection('figures15')
+
+
+const QueryFigure2 = async(user) => {
+    const result = []
+    const cursor = await collection2.find({user:user}).toArray()
+
+    for(const line of cursor){
+        result.push(line.fig)
+    }
+    return result
+}
+
+const PostFigures2 = async (figure, user) => {
+    const doc = {fig:figure,user:user};
+    const reulst = await collection2.insertOne(doc);
+    console.log(reulst)
+}
+
+
+
+
+app.post("/app2/data",(req,res) => {
+    console.log(req.body.data)
+    if(req.body && req.body.data && req.body.user && req.body.data.length == 7 ){
+        PostFigures2(req.body.data,req.body.user);
+    }else{
+        res.status(400).send("An error occured make sure you send you data with the key data and that your array length matches 7")
+    }
+})
+
+app.post("/app2/data2",async (req,res) => {
+    console.log(req.body)
+    res.send({data:await QueryFigure2(req.body.name)})
+})
+
+
+
 app.listen(PORT, ()=>{
     console.log(`Running on ${PORT}`)
 })
