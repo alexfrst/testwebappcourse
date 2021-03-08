@@ -9,6 +9,7 @@ app.use(bodyparser.json())
 
 let db = null;
 let collection = null;
+let collection2 = null;
 
 const client = new MongoClient(process.env.mongouri);
 
@@ -17,6 +18,7 @@ async function GetCollection() {
         await client.connect();
         db = client.db('figures')
         collection = db.collection('figures10')
+        collection = db.collection('figures15')
 };
 GetCollection()
 
@@ -60,7 +62,6 @@ app.get("/app1/data",async (req,res) => {
 
 app.use("/app2",express.static('content2'))
 
-collection2 = db.collection('figures15')
 
 
 const QueryFigure2 = async(user) => {
