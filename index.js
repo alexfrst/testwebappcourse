@@ -4,7 +4,7 @@ const PORT = process.env.PORT||5000;
 const bodyparser = require("body-parser")
 const  MongoClient = require("mongodb").MongoClient;
 let memory = []
-app.use(express.static('content'))
+app.use("/app1",express.static('content'))
 app.use(bodyparser.json())
 
 let db = null;
@@ -39,12 +39,12 @@ const PostFigures = async (figure) => {
 
 app.get("/", ((req, res) => {
     console.log(req)
-    res.status(200).send("Hello World  got to /app1 or /app2")
+    res.status(200).send("Hello World  go to /app1 or /app2")
 }))
 
 
 
-app.post("app1/data",(req,res) => {
+app.post("/app1/data",(req,res) => {
     console.log(req.body)
     if(req.body && req.body.length == 7){
         PostFigures(req.body);
@@ -53,7 +53,7 @@ app.post("app1/data",(req,res) => {
     }
 })
 
-app.get("app1/data",async (req,res) => {
+app.get("/app1/data",async (req,res) => {
     console.log(await QueryFigure())
     res.send({data:await QueryFigure()})
 })
