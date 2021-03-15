@@ -42,11 +42,6 @@ const PostFigures = async (figure) => {
 }
 
 
-app.get("/", ((req, res) => {
-    console.log(req)
-    res.status(200).send("Hello World  go to /app1 or /app2")
-}))
-
 
 
 app.post("/app1/data",(req,res) => {
