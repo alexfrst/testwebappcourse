@@ -123,8 +123,6 @@ io.on('connection', (socket) => {
     });
 });
 
-
-
-app.listen(PORT, ()=>{
-    console.log(`Running on ${PORT}`)
-})
+http.listen(port, () => {
+    console.log(`server running at http://localhost:${port}/`);
+});
