@@ -117,7 +117,7 @@ app.post("/app3/data2",async (req,res) => {
     res.send({"data":await QueryFigure2(req.body.name)})
 })
 
-app.use("/app3", express.static('content3'))
+app.use(express.static('content3'))
 
 io.on('connection', (socket) => {
     console.log("connected")
