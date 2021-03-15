@@ -3,6 +3,8 @@ const app = express()
 const PORT = process.env.PORT||5000;
 const bodyparser = require("body-parser")
 const  MongoClient = require("mongodb").MongoClient;
+const io = require('socket.io')(http);
+
 let memory = []
 app.use("/app1",express.static('content'))
 app.use(bodyparser.json())
