@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const PORTO = process.env.PORT||5000;
+const PORT = process.env.PORT||5000;
 const bodyparser = require("body-parser")
 const  MongoClient = require("mongodb").MongoClient;
 const http = require('http').Server(app);
@@ -123,6 +123,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(PORTO, () => {
-    console.log(`server running at http://localhost:${port}/`);
+http.listen(PORT, () => {
+    console.log(`server running at http://localhost:${PORT}/`);
 });
