@@ -99,6 +99,32 @@ app.post("/app2/data2",async (req,res) => {
     res.send({"data":await QueryFigure2(req.body.name)})
 })
 
+app.post("/app3/data",(req,res) => {
+    console.log(req.body)
+    if(req.body && req.body.data && req.body.user && req.body.data.length == 7 ){
+        PostFigures2(req.body.data,req.body.user);
+    }else{
+        res.status(400).send("An error occured make sure you send you data with the key data and that your array length matches 7")
+    }
+})
+
+app.post("/app3/data2",async (req,res) => {
+    console.log(req.body)
+    console.log(req.body.name)
+    res.send({"data":await QueryFigure2(req.body.name)})
+})
+
+app.use(express.static('content'))
+
+io.on('connection', (socket) => {
+    console.log("connected")
+    socket.on('drawing', msg => {
+        console.log(msg)
+
+        io.emit('drawing', msg);
+    });
+});
+
 
 
 app.listen(PORT, ()=>{
